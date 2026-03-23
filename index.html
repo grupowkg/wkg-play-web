@@ -3,131 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WKG Play - UI/UX Pro Max</title>
-    <!-- Tailwind CSS CDN - including JIT mode for advanced features -->
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>WKG Play - A Rádio Interna Personalizada para seu Restaurante</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0d1117; /* Dark background for modern feel */
-            color: #e6edf3;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
         }
-        /* Glassmorphism effect */
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
+            z-index: 0;
+        }
         .glassmorphism {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border-radius: 12px;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #1f2a40 0%, #0d1117 100%);
+        .bento-grid-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .hero-gradient-text {
-            background: linear-gradient(45deg, #a78bfa, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .bento-grid-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+            pointer-events: none;
+            z-index: 1;
         }
     </style>
 </head>
-<body>
-
+<body class="antialiased">
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center text-center gradient-bg overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-20">
-            <!-- Background pattern or subtle animation would go here for extra pro max feel -->
-            <svg class="absolute inset-0 h-full w-full opacity-10" fill="none" viewBox="0 0 100 100" aria-hidden="true">
-                <defs>
-                    <pattern id="pattern-0" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <circle cx="1" cy="1" r="1" fill="#4a5568"></circle>
-                    </pattern>
-                </defs>
-                <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-0)"></rect>
-            </svg>
-        </div>
-        <div class="relative z-10 p-8 max-w-4xl mx-auto glassmorphism rounded-2xl shadow-2xl animate-fade-in-up">
-            <h1 class="text-6xl font-extrabold leading-tight mb-6 hero-gradient-text">
-                Lorem Ipsum Dolor Sit Amet Consectetur
+    <section class="hero-bg min-h-screen flex items-center justify-center text-center relative p-4">
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-bold leading-tight mb-6 text-white drop-shadow-lg">
+                O que toca no seu restaurante está espantando seus clientes ou fazendo eles pedirem a sobremesa?
             </h1>
-            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+            <p class="text-xl md:text-2xl text-gray-200 mb-10 leading-relaxed">
+                Transforme o ambiente sonoro do seu negócio em uma máquina de vendas e retenção.
             </p>
-            <button class="bg-gradient-to-r from-purple-600 to-indigo-700 text-white font-bold py-4 px-12 rounded-full text-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out hover:from-purple-700 hover:to-indigo-800 focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50">
-                Call to Action
-            </button>
+            <a href="#demonstracao" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-4 px-10 rounded-full text-lg uppercase tracking-wide transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50">
+                Ouvir uma Demonstração
+            </a>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-5xl font-bold text-white mb-16">Nossos Benefícios Exclusivos</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Benefit Card 1 -->
-                <div class="glassmorphism p-10 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-3">
-                    <div class="text-5xl mb-6 text-purple-400">✨</div>
-                    <h3 class="text-3xl font-semibold text-white mb-4">Lorem Ipsum</h3>
-                    <p class="text-gray-300 leading-relaxed">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+    <!-- Agitation of Pain Section -->
+    <section class="py-20 px-4 md:px-8 bg-gray-900">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl font-bold font-['Playfair_Display'] text-white mb-10">
+                Pare de perder dinheiro com a trilha sonora errada.
+            </h2>
+            <p class="text-lg text-gray-400 leading-relaxed mb-8">
+                Quantas vezes você já notou um cliente saindo mais cedo, ou a atmosfera do seu ambiente sendo quebrada por algo que não deveria estar lá? O problema pode não ser a comida ou o serviço, mas sim o que está no ar.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="glassmorphism p-6 flex flex-col items-center">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/spotify.png" alt="Spotify Icon" class="w-12 h-12 mb-4 opacity-70">
+                    <h3 class="text-xl font-semibold text-white mb-2">Spotify Gratuito?</h3>
+                    <p class="text-gray-300 text-center">Seu concorrente anunciando no seu jantar premium. Amadorismo que custa caro.</p>
                 </div>
-                <!-- Benefit Card 2 -->
-                <div class="glassmorphism p-10 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-3">
-                    <div class="text-5xl mb-6 text-indigo-400">⚡</div>
-                    <h3 class="text-3xl font-semibold text-white mb-4">Dolor Sit Amet</h3>
-                    <p class="text-gray-300 leading-relaxed">Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
+                <div class="glassmorphism p-6 flex flex-col items-center">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/advertisement.png" alt="Advertisement Icon" class="w-12 h-12 mb-4 opacity-70">
+                    <h3 class="text-xl font-semibold text-white mb-2">Propagandas Inoportunas</h3>
+                    <p class="text-gray-300 text-center">Interrupções comerciais que destroem a imersão e a experiência do seu cliente.</p>
                 </div>
-                <!-- Benefit Card 3 -->
-                <div class="glassmorphism p-10 rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-3">
-                    <div class="text-5xl mb-6 text-pink-400">💡</div>
-                    <h3 class="text-3xl font-semibold text-white mb-4">Consectetur Adipiscing</h3>
-                    <p class="text-gray-300 leading-relaxed">Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem.</p>
+                <div class="glassmorphism p-6 flex flex-col items-center">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/staff.png" alt="Staff Icon" class="w-12 h-12 mb-4 opacity-70">
+                    <h3 class="text-xl font-semibold text-white mb-2">Funcionários DJ's</h3>
+                    <p class="text-gray-300 text-center">Playlist aleatória ditada pelo gosto pessoal da equipe. Caos sonoro no seu negócio.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof Section (Testimonials) -->
-    <section class="py-20 bg-gray-800">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-5xl font-bold text-white mb-16">O Que Nossos Clientes Dizem</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <!-- Testimonial 1 -->
-                <div class="glassmorphism p-8 rounded-2xl shadow-xl text-left">
-                    <p class="text-xl text-gray-200 italic mb-6">"Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?"</p>
-                    <div class="flex items-center">
-                        <img src="https://via.placeholder.com/60/a78bfa/ffffff?text=U1" alt="Client 1" class="w-16 h-16 rounded-full mr-4 border-2 border-purple-500">
-                        <div>
-                            <p class="font-bold text-white text-lg">Usuário Um</p>
-                            <p class="text-gray-400">Cargo, Empresa A</p>
-                        </div>
-                    </div>
+    <!-- Benefits Section (Bento Grid) -->
+    <section class="py-20 px-4 md:px-8 bg-gradient-to-br from-gray-800 to-black">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold font-['Playfair_Display'] text-white text-center mb-16">
+                Com a WKG Play, a música trabalha a seu favor.
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bento-grid-item glassmorphism md:col-span-2 bg-gradient-to-br from-purple-900/40 to-indigo-900/40">
+                    <img src="https://img.icons8.com/ios-filled/80/ffffff/increase-sales.png" alt="Sales Icon" class="w-20 h-20 mb-6 opacity-80">
+                    <h3 class="text-3xl font-bold text-white mb-4">Aumento Exponencial do Ticket Médio</h3>
+                    <p class="text-lg text-gray-200">
+                        Nossa curadoria sonora é projetada para influenciar a decisão de compra. Músicas que induzem a permanência, o consumo de sobremesas e drinks, e a memorização da experiência. Faça cada nota musical ressoar no seu caixa.
+                    </p>
                 </div>
-                <!-- Testimonial 2 -->
-                <div class="glassmorphism p-8 rounded-2xl shadow-xl text-left">
-                    <p class="text-xl text-gray-200 italic mb-6">"Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat."</p>
-                    <div class="flex items-center">
-                        <img src="https://via.placeholder.com/60/8b5cf6/ffffff?text=U2" alt="Client 2" class="w-16 h-16 rounded-full mr-4 border-2 border-indigo-500">
-                        <div>
-                            <p class="font-bold text-white text-lg">Usuário Dois</p>
-                            <p class="text-gray-400">Cargo, Empresa B</p>
-                        </div>
-                    </div>
+                <div class="bento-grid-item glassmorphism bg-gradient-to-br from-pink-900/40 to-red-900/40">
+                    <img src="https://img.icons8.com/ios-filled/80/ffffff/fingerprint.png" alt="Identity Icon" class="w-20 h-20 mb-6 opacity-80">
+                    <h3 class="text-3xl font-bold text-white mb-4">Identidade Sonora Exclusiva</h3>
+                    <p class="text-lg text-gray-200">
+                        Sua marca, sua música. Criamos uma trilha sonora que é a extensão da sua identidade, sem repetições cansativas ou playlists genéricas. Sua atmosfera, 100% controlada.
+                    </p>
+                </div>
+                <div class="bento-grid-item glassmorphism bg-gradient-to-br from-green-900/40 to-teal-900/40">
+                    <img src="https://img.icons8.com/ios-filled/80/ffffff/settings.png" alt="Management Icon" class="w-20 h-20 mb-6 opacity-80">
+                    <h3 class="text-3xl font-bold text-white mb-4">Gestão Descomplicada</h3>
+                    <p class="text-lg text-gray-200">
+                        Controle total da programação, agendamento e tipos de música, tudo na palma da sua mão. Esqueça as disputas pelo som; a gestão é sua, a música é perfeita.
+                    </p>
+                </div>
+                <div class="bento-grid-item glassmorphism md:col-span-2 bg-gradient-to-br from-yellow-900/40 to-orange-900/40">
+                    <img src="https://img.icons8.com/ios-filled/80/ffffff/no-entry.png" alt="No Ads Icon" class="w-20 h-20 mb-6 opacity-80">
+                    <h3 class="text-3xl font-bold text-white mb-4">Zero Anúncios Concorrentes</h3>
+                    <p class="text-lg text-gray-200">
+                        Proteja seu ambiente. Com WKG Play, você garante que nenhum anúncio de concorrentes, ou qualquer outra interrupção indesejada, roube a atenção (e o bolso) do seu cliente. O foco é 100% no seu negócio.
+                    </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 px-4 md:px-8 bg-gray-950 text-center" id="demonstracao">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-bold text-white mb-8 leading-tight">
+                Chega de improviso. Sua marca merece uma trilha sonora que vende.
+            </h2>
+            <p class="text-xl text-gray-300 mb-12">
+                Descubra como a WKG Play pode revolucionar a experiência dos seus clientes e o desempenho do seu negócio.
+            </p>
+            <a href="mailto:contato@wkgplay.com" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-5 px-12 rounded-full text-xl uppercase tracking-wider transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-opacity-50">
+                Quero Minha Demonstração Gratuita
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="gradient-bg p-12 text-center text-gray-400 border-t border-gray-700">
-        <div class="container mx-auto px-6">
-            <p class="mb-4">&copy; 2026 WKG Play. Todos os direitos reservados. Lorem ipsum dolor sit amet.</p>
-            <div class="flex justify-center space-x-6">
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacidade</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Termos</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Contato</a>
-            </div>
-        </div>
+    <footer class="bg-black py-8 px-4 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 WKG Play. Todos os direitos reservados.</p>
+        <p class="mt-2">Grupo WKG</p>
     </footer>
-
 </body>
 </html>
