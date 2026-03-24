@@ -1,167 +1,105 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WKG Play - A Rádio Interna Personalizada para seu Restaurante</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>WKG Play | Sua Rádio Interna Profissional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0d0d0d;
-            color: #e0e0e0;
-        }
-        .hero-bg {
-            background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        .hero-bg::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
-            z-index: 0;
-        }
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            border-radius: 12px;
-        }
-        .bento-grid-item {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .bento-grid-item::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at top left, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
-            pointer-events: none;
-            z-index: 1;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%); }
+        .cta-shadow { box-shadow: 0 4px 20px rgba(234, 179, 8, 0.4); }
     </style>
 </head>
-<body class="antialiased">
-    <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center justify-center text-center relative p-4">
-        <div class="relative z-10 max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-bold leading-tight mb-6 text-white drop-shadow-lg">
-                O que toca no seu restaurante está espantando seus clientes ou fazendo eles pedirem a sobremesa?
+<body class="bg-black text-white antialiased">
+
+    <header class="gradient-bg border-b border-gray-800">
+        <div class="max-w-4xl mx-auto px-6 py-12 text-center md:py-20">
+            <div class="mb-6 inline-block bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                Exclusivo para Restaurantes e Bistrôs
+            </div>
+            <h1 class="text-4xl md:text-6xl font-800 leading-tight mb-6 tracking-tight">
+                Seu restaurante <span class="text-yellow-500">não é um rádio de pilha.</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-200 mb-10 leading-relaxed">
-                Transforme o ambiente sonoro do seu negócio em uma máquina de vendas e retenção.
+            <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+                Pare de tocar anúncios dos seus concorrentes. Troque o Spotify amador pela única rádio interna feita para aumentar seu faturamento.
             </p>
-            <a href="#demonstracao" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-4 px-10 rounded-full text-lg uppercase tracking-wide transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50">
-                Ouvir uma Demonstração
+            <a href="#contato" class="cta-shadow bg-yellow-500 hover:bg-yellow-400 text-black font-extrabold text-lg px-8 py-5 rounded-xl transition-all inline-block w-full md:w-auto uppercase text-center">
+                Ativar Minha Rádio Agora
             </a>
         </div>
-    </section>
+    </header>
 
-    <!-- Agitation of Pain Section -->
-    <section class="py-20 px-4 md:px-8 bg-gray-900">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-4xl font-bold font-['Playfair_Display'] text-white mb-10">
-                Pare de perder dinheiro com a trilha sonora errada.
+    <section class="py-16 bg-zinc-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl md:text-3xl font-bold mb-10 text-center text-red-500 uppercase">
+                O amadorismo está expulsando seus clientes?
             </h2>
-            <p class="text-lg text-gray-400 leading-relaxed mb-8">
-                Quantas vezes você já notou um cliente saindo mais cedo, ou a atmosfera do seu ambiente sendo quebrada por algo que não deveria estar lá? O problema pode não ser a comida ou o serviço, mas sim o que está no ar.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <div class="glassmorphism p-6 flex flex-col items-center">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/spotify.png" alt="Spotify Icon" class="w-12 h-12 mb-4 opacity-70">
-                    <h3 class="text-xl font-semibold text-white mb-2">Spotify Gratuito?</h3>
-                    <p class="text-gray-300 text-center">Seu concorrente anunciando no seu jantar premium. Amadorismo que custa caro.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-black p-6 rounded-2xl border border-gray-800">
+                    <p class="text-gray-300">⚠️ Anúncios do iFood ou de concorrentes gritando no seu salão.</p>
                 </div>
-                <div class="glassmorphism p-6 flex flex-col items-center">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/advertisement.png" alt="Advertisement Icon" class="w-12 h-12 mb-4 opacity-70">
-                    <h3 class="text-xl font-semibold text-white mb-2">Propagandas Inoportunas</h3>
-                    <p class="text-gray-300 text-center">Interrupções comerciais que destroem a imersão e a experiência do seu cliente.</p>
+                <div class="bg-black p-6 rounded-2xl border border-gray-800">
+                    <p class="text-gray-300">⚠️ Funcionários perdendo tempo escolhendo playlist no celular.</p>
                 </div>
-                <div class="glassmorphism p-6 flex flex-col items-center">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/staff.png" alt="Staff Icon" class="w-12 h-12 mb-4 opacity-70">
-                    <h3 class="text-xl font-semibold text-white mb-2">Funcionários DJ's</h3>
-                    <p class="text-gray-300 text-center">Playlist aleatória ditada pelo gosto pessoal da equipe. Caos sonoro no seu negócio.</p>
+                <div class="bg-black p-6 rounded-2xl border border-gray-800">
+                    <p class="text-gray-300">⚠️ Músicas que não combinam com o seu cardápio ou horário.</p>
+                </div>
+                <div class="bg-black p-6 rounded-2xl border border-gray-800">
+                    <p class="text-gray-300">⚠️ Silêncio constrangedor que faz o cliente ir embora cedo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section (Bento Grid) -->
-    <section class="py-20 px-4 md:px-8 bg-gradient-to-br from-gray-800 to-black">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold font-['Playfair_Display'] text-white text-center mb-16">
-                Com a WKG Play, a música trabalha a seu favor.
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center tracking-tight">
+                Transforme som em <span class="text-yellow-500">faturamento.</span>
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bento-grid-item glassmorphism md:col-span-2 bg-gradient-to-br from-purple-900/40 to-indigo-900/40">
-                    <img src="https://img.icons8.com/ios-filled/80/ffffff/increase-sales.png" alt="Sales Icon" class="w-20 h-20 mb-6 opacity-80">
-                    <h3 class="text-3xl font-bold text-white mb-4">Aumento Exponencial do Ticket Médio</h3>
-                    <p class="text-lg text-gray-200">
-                        Nossa curadoria sonora é projetada para influenciar a decisão de compra. Músicas que induzem a permanência, o consumo de sobremesas e drinks, e a memorização da experiência. Faça cada nota musical ressoar no seu caixa.
-                    </p>
+            <div class="space-y-12">
+                <div class="flex items-start gap-4">
+                    <div class="bg-yellow-500/10 p-3 rounded-lg text-yellow-500 font-bold">✓</div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">Anúncios Próprios</h3>
+                        <p class="text-gray-400 leading-relaxed">Grave ofertas da sua casa e insira entre as músicas. Venda a sobremesa ou o drink do mês de forma automática.</p>
+                    </div>
                 </div>
-                <div class="bento-grid-item glassmorphism bg-gradient-to-br from-pink-900/40 to-red-900/40">
-                    <img src="https://img.icons8.com/ios-filled/80/ffffff/fingerprint.png" alt="Identity Icon" class="w-20 h-20 mb-6 opacity-80">
-                    <h3 class="text-3xl font-bold text-white mb-4">Identidade Sonora Exclusiva</h3>
-                    <p class="text-lg text-gray-200">
-                        Sua marca, sua música. Criamos uma trilha sonora que é a extensão da sua identidade, sem repetições cansativas ou playlists genéricas. Sua atmosfera, 100% controlada.
-                    </p>
+                <div class="flex items-start gap-4">
+                    <div class="bg-yellow-500/10 p-3 rounded-lg text-yellow-500 font-bold">✓</div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">Curadoria Inteligente</h3>
+                        <p class="text-gray-400 leading-relaxed">Programação musical que se adapta ao seu público: do almoço executivo ao jantar romântico.</p>
+                    </div>
                 </div>
-                <div class="bento-grid-item glassmorphism bg-gradient-to-br from-green-900/40 to-teal-900/40">
-                    <img src="https://img.icons8.com/ios-filled/80/ffffff/settings.png" alt="Management Icon" class="w-20 h-20 mb-6 opacity-80">
-                    <h3 class="text-3xl font-bold text-white mb-4">Gestão Descomplicada</h3>
-                    <p class="text-lg text-gray-200">
-                        Controle total da programação, agendamento e tipos de música, tudo na palma da sua mão. Esqueça as disputas pelo som; a gestão é sua, a música é perfeita.
-                    </p>
-                </div>
-                <div class="bento-grid-item glassmorphism md:col-span-2 bg-gradient-to-br from-yellow-900/40 to-orange-900/40">
-                    <img src="https://img.icons8.com/ios-filled/80/ffffff/no-entry.png" alt="No Ads Icon" class="w-20 h-20 mb-6 opacity-80">
-                    <h3 class="text-3xl font-bold text-white mb-4">Zero Anúncios Concorrentes</h3>
-                    <p class="text-lg text-gray-200">
-                        Proteja seu ambiente. Com WKG Play, você garante que nenhum anúncio de concorrentes, ou qualquer outra interrupção indesejada, roube a atenção (e o bolso) do seu cliente. O foco é 100% no seu negócio.
-                    </p>
+                <div class="flex items-start gap-4">
+                    <div class="bg-yellow-500/10 p-3 rounded-lg text-yellow-500 font-bold">✓</div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">Controle Total via App</h3>
+                        <p class="text-gray-400 leading-relaxed">Sua marca é a única que fala. Sem anúncios externos, sem interrupções de terceiros.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action Section -->
-    <section class="py-20 px-4 md:px-8 bg-gray-950 text-center" id="demonstracao">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-bold text-white mb-8 leading-tight">
-                Chega de improviso. Sua marca merece uma trilha sonora que vende.
-            </h2>
-            <p class="text-xl text-gray-300 mb-12">
-                Descubra como a WKG Play pode revolucionar a experiência dos seus clientes e o desempenho do seu negócio.
-            </p>
-            <a href="mailto:contato@wkgplay.com" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-5 px-12 rounded-full text-xl uppercase tracking-wider transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-opacity-50">
-                Quero Minha Demonstração Gratuita
+    <footer id="contato" class="py-20 bg-zinc-950 border-t border-gray-800 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-6 text-yellow-500">Pronto para profissionalizar sua casa?</h2>
+            <p class="text-gray-400 mb-10 text-lg">Pare de ser refém de algoritmos gratuitos e assuma o controle da sua atmosfera sonora.</p>
+            
+            <a href="https://wa.me/5519992504157?text=Olá!%20Vi%20o%20anúncio%20da%20WKG%20Play%20e%20quero%20profissionalizar%20o%20som%20do%20meu%20restaurante." 
+               class="bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl px-10 py-6 rounded-2xl transition-all inline-flex items-center gap-3 cta-shadow text-center">
+                FALAR COM UM ESPECIALISTA AGORA
             </a>
+            
+            <p class="mt-12 text-gray-600 text-sm">
+                Uma solução da <br>
+                <span class="font-bold">WG Comunicação / Grupo WKG</span>
+            </p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black py-8 px-4 text-center text-gray-500 text-sm">
-        <p>&copy; 2026 WKG Play. Todos os direitos reservados.</p>
-        <p class="mt-2">Grupo WKG</p>
     </footer>
+
 </body>
 </html>
