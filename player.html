@@ -26,13 +26,13 @@
         <h1>Uma rádio que <em>toca</em> sua marca.</h1>
         <p class="copy">Música, chamadas, anúncios e muito mais. Tudo em uma experiência de áudio com a identidade da sua empresa.</p>
         <div class="player">
-          <div class="art"><b>WKG</b></div><div class="meta"><small>TOCANDO AGORA</small><strong id="radio-name">Rádio WKG Play Fitness</strong><p id="song-name">Energia que move o seu treino</p></div><button class="button" id="play" aria-label="Tocar prévia">▶</button>
+          <div class="art"><b>WKG</b></div><div class="meta"><small>TOCANDO AGORA</small><strong id="radio-name">Rádio WKG Play Fitness</strong><p id="song-name">Energia que move o seu treino</p></div><button class="button" id="play" aria-label="Tocar rádio">▶</button>
           <div class="timeline"><span>00:44</span><div class="bar"><span></span></div><span>02:38</span></div>
         </div>
       </article>
       <aside class="side">
         <h2>Histórico da rádio</h2><p>As últimas músicas reproduzidas na sua programação.</p>
-        <div class="history">
+        <div class="history" id="history">
           <div class="history-item"><span class="history-icon">♫</span><span><b class="history-title">Midnight City</b><small class="history-artist">M83</small></span><span class="history-time">há 3 min</span></div>
           <div class="history-item"><span class="history-icon">♫</span><span><b class="history-title">Keep Moving</b><small class="history-artist">Jungle</small></span><span class="history-time">há 7 min</span></div>
           <div class="history-item"><span class="history-icon">♫</span><span><b class="history-title">A sua energia</b><small class="history-artist">Chamada WKG Play</small></span><span class="history-time">há 10 min</span></div>
@@ -41,10 +41,63 @@
         <div class="live-state"><span class="live-icon"><span class="sound" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></span></span><span>Ao vivo</span></div>
       </aside>
     </section>
-    <p class="note"><b>Prévia visual.</b> Na publicação final, o player exibirá automaticamente capa, faixa e transmissão ao vivo de cada rádio.</p>
+    <p class="note" id="status"><b>Prévia visual.</b> Na publicação final, o player exibirá automaticamente capa, faixa e transmissão ao vivo de cada rádio.</p>
   </main>
   <script>
-    document.querySelector('#play').onclick=event=>{event.currentTarget.textContent=event.currentTarget.textContent==='▶'?'❚❚':'▶'};
+    /*
+     * Produção: https://radio.wkgplay.com.br/wkg-play
+     * O trecho final da URL identifica a estação. "wkg-play" é mapeada para
+     * o slug técnico atual "wkg_play" no AzuraCast; as próximas seguem o
+     * mesmo padrão, salvo uma exceção cadastrada abaixo.
+     */
+    const clientKey = location.pathname.split('/').filter(Boolean).at(-1) || 'wkg-play';
+    const stationMap = {'wkg-play': 'wkg_play'};
+    const stationSlug = stationMap[clientKey] || clientKey.replace(/-/g, '_');
+    const azuraOrigin = location.hostname === 'radio.wkgplay.com.br'
+      ? location.origin
+      : 'https://2.25.108.146';
+    const audio = new Audio();
+    const playButton = document.querySelector('#play');
+    const history = document.querySelector('#history');
+    const status = document.querySelector('#status');
+
+    const escapeHtml = value => String(value || '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]));
+    const ago = timestamp => {
+      const seconds = Math.max(0, Math.round(Date.now() / 1000 - timestamp));
+      if (seconds < 60) return 'agora';
+      if (seconds < 3600) return `há ${Math.floor(seconds / 60)} min`;
+      return `há ${Math.floor(seconds / 3600)} h`;
+    };
+    const renderHistory = songs => {
+      if (!songs?.length) return;
+      history.innerHTML = songs.slice(0, 4).map(song => {
+        const title = escapeHtml(song.song?.title || 'Sem título');
+        const artist = escapeHtml(song.song?.artist || 'WKG Play');
+        return `<div class="history-item"><span class="history-icon">♫</span><span><b class="history-title">${title}</b><small class="history-artist">${artist}</small></span><span class="history-time">${ago(song.played_at)}</span></div>`;
+      }).join('');
+    };
+    const loadStation = async () => {
+      try {
+        const response = await fetch(`${azuraOrigin}/api/nowplaying/${stationSlug}`);
+        if (!response.ok) throw new Error('Estação indisponível');
+        const data = await response.json();
+        document.querySelector('#radio-name').textContent = data.station.name;
+        document.querySelector('#song-name').textContent = data.now_playing.song.text || 'Ao vivo';
+        audio.src = data.station.listen_url;
+        renderHistory(data.song_history);
+        status.innerHTML = '<b>Ao vivo.</b> Dados, transmissão e histórico conectados ao AzuraCast.';
+      } catch (_) {
+        // Mantém a prévia útil até o novo domínio e o certificado SSL estarem ativos.
+      }
+    };
+    playButton.onclick = async () => {
+      if (!audio.src) await loadStation();
+      if (audio.paused) { await audio.play(); playButton.textContent = '❚❚'; }
+      else { audio.pause(); playButton.textContent = '▶'; }
+    };
+    audio.onpause = () => { playButton.textContent = '▶'; };
+    audio.onplay = () => { playButton.textContent = '❚❚'; };
+    loadStation();
   </script>
 </body>
 </html>
