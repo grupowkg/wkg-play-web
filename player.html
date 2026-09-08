@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b0b0e">
+  <title>WKG Play — Prévia do Player</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+    :root{--yellow:#f5c518;--ink:#0b0b0e;--panel:#16161b;--muted:#a7a7b1;--line:rgba(255,255,255,.12)}
+    *{box-sizing:border-box}body{margin:0;min-height:100svh;color:#fff;background:radial-gradient(circle at 7% 7%,#513b0077,transparent 26%),radial-gradient(circle at 88% 90%,#3c2c0077,transparent 30%),var(--ink);font-family:'DM Sans',sans-serif}
+    .shell{width:min(1120px,92vw);margin:auto;padding:27px 0 50px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:50px}.brand{font:800 1.28rem/1 'Syne';letter-spacing:-.08em}.brand span{color:var(--yellow)}.badge{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}.badge i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#46dd80;margin-right:6px}
+    .layout{display:grid;grid-template-columns:1.4fr .8fr;gap:25px}.main,.side{border:1px solid var(--line);border-radius:31px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018));box-shadow:0 30px 70px #0006}.main{padding:clamp(24px,5vw,56px);min-height:570px;position:relative;overflow:hidden}.main:after{content:'';position:absolute;right:-60px;top:-100px;width:300px;height:300px;border:35px solid #f5c51812;border-radius:50%}
+    .eyebrow{color:var(--yellow);font-size:.7rem;letter-spacing:.18em;font-weight:700;margin:0 0 13px}.main h1{font:800 clamp(2.1rem,5vw,4.55rem)/.91 'Syne';letter-spacing:-.09em;max-width:650px;margin:0 0 24px}.main h1 em{color:var(--yellow);font-style:normal}.copy{max-width:480px;color:var(--muted);line-height:1.55;margin:0 0 35px}
+    .player{position:relative;z-index:1;border:1px solid #ffffff19;border-radius:21px;background:#08080b;padding:17px;display:grid;grid-template-columns:82px 1fr auto;gap:17px;align-items:center}.art{height:82px;border-radius:15px;background:linear-gradient(140deg,#15151c 20%,#765d06),linear-gradient(#000,#000);display:grid;place-items:center;overflow:hidden;box-shadow:inset 0 0 25px #0008}.art b{font:800 1.8rem 'Syne';letter-spacing:-.1em}.meta small{display:block;color:var(--yellow);font-size:.62rem;font-weight:700;letter-spacing:.13em;margin-bottom:5px}.meta strong{font-size:1.08rem}.meta p{margin:5px 0 0;color:var(--muted);font-size:.84rem}.button{width:57px;height:57px;display:grid;place-items:center;border:0;border-radius:50%;background:var(--yellow);font-size:1.05rem;color:#111;cursor:pointer;transition:.2s}.button:hover{transform:scale(1.06);background:#fff0a2}.timeline{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;color:#87878f;font-size:.68rem}.bar{height:3px;background:#33333a;border-radius:5px}.bar span{display:block;width:44%;height:100%;border-radius:5px;background:var(--yellow)}
+    .side{padding:28px}.side h2{font:700 1.25rem 'Syne';letter-spacing:-.05em;margin:0 0 7px}.side>p{margin:0 0 23px;color:var(--muted);font-size:.86rem}.stations{display:grid;gap:10px}.station{appearance:none;color:#fff;width:100%;background:#ffffff08;border:1px solid transparent;border-radius:16px;padding:13px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:.2s}.station:hover,.station.active{background:#f5c51815;border-color:#f5c51866}.dot{width:33px;height:33px;flex:0 0 auto;display:grid;place-items:center;border-radius:10px;background:#ffffff12;font:700 .66rem 'Syne';color:#e6e6eb}.station.active .dot{background:var(--yellow);color:#111}.station b{font-size:.83rem}.station small{display:block;margin-top:3px;color:var(--muted);font-size:.67rem}.sound{height:40px;display:flex;align-items:center;gap:4px;margin:32px 0 13px}.sound span{width:5px;background:var(--yellow);border-radius:8px;animation:wave 1.1s ease-in-out infinite alternate}.sound span:nth-child(1){height:11px}.sound span:nth-child(2){height:28px;animation-delay:.2s}.sound span:nth-child(3){height:18px;animation-delay:.4s}.sound span:nth-child(4){height:35px;animation-delay:.1s}.sound span:nth-child(5){height:15px;animation-delay:.3s}.sound span:nth-child(6){height:25px;animation-delay:.5s}.live{font-size:.77rem;color:#bdbdc6}.live b{color:#fff}@keyframes wave{to{transform:scaleY(.36)}}
+    .note{text-align:center;margin:31px auto 0;color:#777780;font-size:.75rem;max-width:620px}.note b{color:#c3c3ca}@media(max-width:760px){.top{margin-bottom:30px}.layout{grid-template-columns:1fr}.main{min-height:auto}.main h1{font-size:2.8rem}.side{padding:22px}}@media(max-width:470px){.player{grid-template-columns:62px 1fr}.art{height:62px}.button{grid-column:1/-1;width:100%;height:45px;border-radius:13px}.timeline{grid-column:1/-1}.badge{font-size:.61rem}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top"><div class="brand">WKG <span>PLAY</span></div><div class="badge"><i></i>Player em prévia</div></header>
+    <section class="layout">
+      <article class="main">
+        <p class="eyebrow">SOM COM A CARA DA SUA MARCA</p>
+        <h1>Uma rádio que <em>toca</em> o seu negócio.</h1>
+        <p class="copy">Música, chamadas de aulas, anúncios e recados. Tudo em uma experiência de áudio com a identidade da sua empresa.</p>
+        <div class="player">
+          <div class="art"><b>WKG</b></div><div class="meta"><small>TOCANDO AGORA</small><strong id="radio-name">Rádio WKG Play Fitness</strong><p id="song-name">Energia que move o seu treino</p></div><button class="button" id="play" aria-label="Tocar prévia">▶</button>
+          <div class="timeline"><span>00:44</span><div class="bar"><span></span></div><span>02:38</span></div>
+        </div>
+      </article>
+      <aside class="side">
+        <h2>Escolha sua rádio</h2><p>Cada cliente tem sua própria programação e identidade.</p>
+        <div class="stations">
+          <button class="station active" data-name="Rádio WKG Play Fitness" data-song="Energia que move o seu treino"><span class="dot">01</span><span><b>WKG Play Fitness</b><small>Academias e studios</small></span></button>
+          <button class="station" data-name="Rádio Bio Festas" data-song="A trilha sonora da sua celebração"><span class="dot">02</span><span><b>Bio Festas</b><small>Eventos e experiências</small></span></button>
+          <button class="station" data-name="Rádio da Sua Marca" data-song="Programação feita exclusivamente para você"><span class="dot">+</span><span><b>Sua próxima rádio</b><small>Personalizada de ponta a ponta</small></span></button>
+        </div>
+        <div class="sound" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="live"><b>Ao vivo</b> • Programação contínua, sem anúncios de terceiros.</p>
+      </aside>
+    </section>
+    <p class="note"><b>Prévia visual.</b> Na publicação final, o player exibirá automaticamente capa, faixa e transmissão ao vivo de cada rádio.</p>
+  </main>
+  <script>
+    const radios=document.querySelectorAll('.station'),name=document.querySelector('#radio-name'),song=document.querySelector('#song-name'),play=document.querySelector('#play');
+    radios.forEach(r=>r.onclick=()=>{radios.forEach(x=>x.classList.remove('active'));r.classList.add('active');name.textContent=r.dataset.name;song.textContent=r.dataset.song});
+    play.onclick=()=>{play.textContent=play.textContent==='▶'?'❚❚':'▶'};
+  </script>
+</body>
+</html>
